@@ -172,6 +172,8 @@ import javax.ws.rs.core.GenericType;
 import javax.ws.rs.core.MultivaluedHashMap;
 import javax.ws.rs.core.MultivaluedMap;
 import javax.ws.rs.core.Response;
+import javax.ws.rs.core.Feature;
+import javax.ws.rs.core.FeatureContext;
 
 import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.compress.utils.IOUtils;
@@ -195,6 +197,9 @@ import org.glassfish.jersey.client.ClientConfig;
 import org.glassfish.jersey.client.ClientProperties;
 import org.glassfish.jersey.client.RequestEntityProcessing;
 import org.glassfish.jersey.jackson.JacksonFeature;
+import org.glassfish.hk2.utilities.binding.AbstractBinder;
+import org.glassfish.hk2.api.Filter;
+import org.glassfish.hk2.api.Descriptor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -328,7 +333,25 @@ public class DefaultDockerClient implements DockerClient, Closeable {
   private static final long DEFAULT_READ_TIMEOUT_MILLIS = SECONDS.toMillis(30);
   private static final int DEFAULT_CONNECTION_POOL_SIZE = 100;
 
+  public static class AndroidFriendlyFeature implements Feature{
+    @Override public boolean configure(FeatureContext context) {
+      context.register(new AbstractBinder() {
+        @Override protected void configure() {
+          addUnbindFilter(new Filter() {
+            @Override public boolean matches(Descriptor d) {
+              String implClass = d.getImplementation();
+              return implClass.startsWith("org.glassfish.jersey.message.internal.DataSource") || implClass.startsWith("org.glassfish.jersey.message.internal.RenderedImage");
+            }
+          });
+        }
+      });
+      return true;
+    }
+  }
+
+
   private final ClientConfig defaultConfig = new ClientConfig(
+      AndroidFriendlyFeature.class,
       ObjectMapperProvider.class,
       JacksonFeature.class,
       LogsResponseReader.class,
