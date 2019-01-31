@@ -371,7 +371,11 @@
             </relocation>
             <relocation>
               <pattern>org.apache.http</pattern>
-              <shadedPattern>com.spotify.docker.client.shaded.org.apache.http</shadedPattern>
+              <shadedPattern>com.spotify.docker.client.shaded.cz.msebera.android.httpclient</shadedPattern>
+            </relocation>
+            <relocation>
+              <pattern>cz.msebera.android.httpclient</pattern>
+              <shadedPattern>com.spotify.docker.client.shaded.cz.msebera.android.httpclient</shadedPattern>
             </relocation>
             <relocation>
               <pattern>org.objectweb.asm</pattern>
