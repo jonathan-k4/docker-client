@@ -27,7 +27,7 @@ import com.spotify.docker.client.messages.Event;
 import java.io.Closeable;
 import java.io.IOException;
 
-import org.apache.http.client.methods.CloseableHttpResponse;
+import cz.msebera.android.httpclient.client.methods.CloseableHttpResponse;
 
 public class EventReader implements Closeable {
 

@@ -132,9 +132,9 @@
       <version>2.5</version>
     </dependency>
     <dependency>
-      <groupId>org.apache.httpcomponents</groupId>
+      <groupId>cz.msebera.android</groupId>
       <artifactId>httpclient</artifactId>
-      <version>4.5</version>
+      <version>4.4.1.1</version>
     </dependency>
     <dependency>
       <groupId>org.apache.httpcomponents</groupId>
@@ -267,14 +267,6 @@
         </configuration>
       </plugin>
       <plugin>
-        <artifactId>maven-checkstyle-plugin</artifactId>
-        <configuration>
-          <includeTestSourceDirectory>true</includeTestSourceDirectory>
-          <violationSeverity>warning</violationSeverity>
-          <excludes>**\/AutoValue_*.java</excludes>
-        </configuration>
-      </plugin>
-      <plugin>
         <artifactId>maven-enforcer-plugin</artifactId>
       </plugin>
       <plugin>
@@ -339,7 +331,7 @@
               <include>com.github.jnr:*</include>
               <include>org.ow2.asm:*</include>
               <include>com.google.guava:**</include>
-              <include>org.apache.httpcomponents:httpclient</include>
+              <include>cz.msebera.android:httpclient</include>
               <include>org.apache.httpcomponents:httpcore</include>
               <include>asm:asm</include>
             </includes>

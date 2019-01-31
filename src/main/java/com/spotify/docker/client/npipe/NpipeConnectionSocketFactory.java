@@ -26,11 +26,11 @@ import java.net.InetSocketAddress;
 import java.net.Socket;
 import java.net.URI;
 
-import org.apache.http.HttpHost;
 import org.apache.http.annotation.Contract;
 import org.apache.http.annotation.ThreadingBehavior;
-import org.apache.http.conn.socket.ConnectionSocketFactory;
-import org.apache.http.protocol.HttpContext;
+import cz.msebera.android.httpclient.HttpHost;
+import cz.msebera.android.httpclient.conn.socket.ConnectionSocketFactory;
+import cz.msebera.android.httpclient.protocol.HttpContext;
 
 /**
  * Provides a ConnectionSocketFactory for connecting Apache HTTP clients to windows named pipe.

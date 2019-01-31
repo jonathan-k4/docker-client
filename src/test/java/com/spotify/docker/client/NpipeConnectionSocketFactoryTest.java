@@ -35,8 +35,8 @@ import java.nio.channels.SocketChannel;
 
 import javax.net.ssl.SSLSocket;
 
-import org.apache.http.HttpHost;
-import org.apache.http.protocol.HttpContext;
+import cz.msebera.android.httpclient.HttpHost;
+import cz.msebera.android.httpclient.protocol.HttpContext;
 import org.hamcrest.core.IsInstanceOf;
 import org.junit.Before;
 import org.junit.Rule;
